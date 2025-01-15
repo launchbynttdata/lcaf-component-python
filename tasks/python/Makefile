@@ -3,7 +3,7 @@ python/venv:
 	uv venv
 
 .PHONY: python/test
-python/test:
+test::
 	pytest
 
 .PHONY: python/build
