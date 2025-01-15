@@ -6,8 +6,14 @@ python/venv:
 python/build:
 	uv build
 
+.PHONY: lint
 lint::
 	uvx ruff check
 
+.PHONY: test
 test::
 	pytest
+
+.PHONY: coverage
+coverage:: pytest
+	open -a "Google Chrome" htmlcov/index.html
