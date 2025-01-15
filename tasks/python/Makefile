@@ -1,21 +1,19 @@
-.SILENT
-
 .PHONY: python/venv
 python/venv:
-	uv venv
+	@uv venv
 
 .PHONY: python/build
 python/build:
-	uv build
+	@uv build
 
 .PHONY: lint
 lint::
-	uvx ruff check
+	@uvx ruff check
 
 .PHONY: test
 test::
-	pytest
+	@pytest
 
 .PHONY: coverage
 coverage:: test
-	open -a "Google Chrome" htmlcov/index.html
+	@open -a "Google Chrome" htmlcov/index.html
