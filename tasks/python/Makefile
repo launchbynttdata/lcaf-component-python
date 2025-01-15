@@ -15,5 +15,5 @@ test::
 	pytest
 
 .PHONY: coverage
-coverage:: pytest
+coverage:: test
 	open -a "Google Chrome" htmlcov/index.html
