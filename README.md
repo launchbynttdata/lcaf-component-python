@@ -1,6 +1,6 @@
 # Launch Common Automation Framework - Python Module Component
 
-This repo holds the component for Python modules within the Launch Common Automation Framework (LCAF).
+This repo holds the component for Python modules utilizing [uv](https://docs.astral.sh/uv/) within the Launch Common Automation Framework (LCAF).
 
 It contains the following:
 
