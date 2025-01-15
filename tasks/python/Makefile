@@ -1,3 +1,5 @@
+.SILENT
+
 .PHONY: python/venv
 python/venv:
 	uv venv
