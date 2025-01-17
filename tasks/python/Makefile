@@ -12,7 +12,7 @@ lint::
 
 .PHONY: test
 test::
-	@pytest
+	@uv run pytest
 
 .PHONY: coverage
 coverage:: test
