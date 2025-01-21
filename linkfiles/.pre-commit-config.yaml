@@ -1,37 +1,62 @@
+default_install_hook_types:
+  - pre-commit
+  - post-checkout
+  - post-merge
+  - post-rewrite
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
       - id: trailing-whitespace
+        stages:
+          - pre-commit
       - id: check-case-conflict
+        stages:
+          - pre-commit
       - id: check-executables-have-shebangs
+        stages:
+          - pre-commit
       - id: check-json
+        stages:
+          - pre-commit
       - id: check-merge-conflict
+        stages:
+          - pre-commit
       - id: check-shebang-scripts-are-executable
+        stages:
+          - pre-commit
       - id: check-yaml
         args:
           - --allow-multiple-documents
+        stages:
+          - pre-commit
       - id: end-of-file-fixer
+        stages:
+          - pre-commit
       - id: mixed-line-ending
         args:
           - --fix=auto
-  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.4.0
-    hooks:
-      - id: commitlint
-        stages: [commit-msg]
-        additional_dependencies: ["@commitlint/config-conventional"]
+        stages:
+          - pre-commit
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
     hooks:
       - id: detect-secrets
         args: ["--baseline", ".secrets.baseline"]
         exclude: package.lock.json
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+        stages:
+          - pre-commit
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.5.18
     hooks:
-      - id: isort
-  - repo: https://github.com/psf/black
-    rev: 23.7.0
-    hooks:
-      - id: black
+      # Update the uv lockfile
+      - id: uv-lock
+        stages:
+          - pre-commit
+      - id: uv-sync
+        stages:
+          - pre-commit
+          - post-checkout
+          - post-merge
+          - post-rewrite
